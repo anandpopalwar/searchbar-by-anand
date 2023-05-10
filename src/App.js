@@ -23,8 +23,9 @@ function App() {
 
   }, [search])
 
+
   const getAPI = async () => {
-    const json = await fetch(`http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${search}`);
+    const json = await fetch(process.env.REACT_APP_SEARCH_API+search);
     const data = await json.json()
     console.log(data[0], data[1])
     setSuggestionList(data[1])
